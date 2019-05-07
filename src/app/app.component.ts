@@ -1,4 +1,21 @@
 import { Component } from '@angular/core';
+import * as express from 'express';
+import * as morgan from 'morgan';
+
+const bodyParser = require('body-parser');
+function startServer() {
+  const app = express();
+
+  app.use(morgan('dev'));
+
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
+
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log('Server is running on port ${port}');
+  });
+}
 
 @Component({
   selector: 'app-root',
@@ -6,5 +23,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'weather-app';
+  title = 'My Weather App';
+
+  
 }
