@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import * as express from 'express';
 import * as morgan from 'morgan';
+import * as bodyParser from 'body-parser';
 
-const bodyParser = require('body-parser');
 function startServer() {
   const app = express();
 
