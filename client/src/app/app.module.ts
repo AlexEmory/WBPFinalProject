@@ -1,12 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import * as express from 'express';
-import * as morgan from 'morgan';
-import * as bodyParser from 'body-parser';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { response } from 'express';
-import * as dotenv from 'dotenv';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,12 +19,7 @@ import { Parser } from '@angular/compiler';
     BrowserModule,
     AppRoutingModule,
     NgModule,
-    express,
-    morgan,
-    bodyParser,
     HttpClient,
-    response,
-    dotenv,
     Component
   ],
   providers: [],

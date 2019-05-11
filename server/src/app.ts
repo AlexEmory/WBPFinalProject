@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
@@ -13,17 +12,11 @@ function startServer() {
 
   const port = process.env.PORT || 3000;
   app.listen(port, () => {
-    console.log('Server is running on port ${port}');
+    console.log(`Server is running on port ${port}`);
   });
 }
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-})
-export class AppComponent {
-  title = 'My Weather App';
-
-  
-}
+// Calls the start server function when the module loads.
+// If connections the a database need to be established before serving HTTP traffic,
+// they should be configured before calling startServer
+startServer();
