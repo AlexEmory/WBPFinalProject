@@ -20,7 +20,8 @@ export class WeatherComponent implements OnInit {
   getWeather(lat: string, long: string) {
     console.log("Weather componenet:", lat, ",", long);
     this.http.get('https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long)
-    // FIXME: subscribe takes a function - see the RxJS lecture on Panopto for reference
-      .subscribe(this.weather = response.get);
+      .subscribe(response => {
+        this.weather = response;
+      });
   }
 }
