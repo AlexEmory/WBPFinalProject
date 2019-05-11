@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-const KEY = process.env.KEY || '';
+const KEY = environment.KEY;
 
 @Component({
   selector: 'app-weather',
