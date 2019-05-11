@@ -19,10 +19,9 @@ export class SearchBarComponent implements OnInit {
     console.log(f.value);  // { lat: '', long: '' }
     this.lat = f.controls['lat'].value;
     this.long = f.controls['long'].value;
+    if (this.lat )
     if (f.valid) {
-      // FIXME: You shouldn't inject a component into another component (it's causing an error)
-      // Try making a service instead.
-      // this.weather.getWeather(this.lat, this.long)
+      WeatherComponent.getWeather(this.lat, this.long);
     }
   }
 }

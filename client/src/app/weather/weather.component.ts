@@ -10,18 +10,17 @@ const KEY = environment.KEY;
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
+  
   lat: string;
   long: string;
-  weather: object = null;
-  constructor(private http: HttpClient) { }
-
+  static weather: object = null;
+  constructor(private http: HttpClient) { 
+  }
+  
   ngOnInit() {
   }
-  getWeather(lat: string, long: string) {
-    console.log("Weather componenet:", lat, ",", long);
-    this.http.get('https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long)
-      .subscribe(response => {
-        this.weather = response;
-      });
+
+  static getWeather(lat: string, long: string) {
+    this.weather=this.http.get('localhost:3000/weather?lat=' + lat + '&long=' + long);
   }
 }

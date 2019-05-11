@@ -1,7 +1,7 @@
 Enter your location to get your weather!
 <form #loc="ngForm" (ngSubmit)="onSubmit(loc)" novalidate>
-  <input name="lat" ngModel required #lat="ngModel">
-  <input name="long" ngModel required #long="ngModel">
+  <input type="number" step="0.01" name="lat" ngModel required #lat="ngModel">
+  <input type="number" step="0.01" name="long" ngModel required #long="ngModel">
   <button>Submit</button>
 </form>
 
