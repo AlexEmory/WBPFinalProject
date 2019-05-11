@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,9 +18,7 @@ import { Parser } from '@angular/compiler';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgModule,
-    HttpClient,
-    Component
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
