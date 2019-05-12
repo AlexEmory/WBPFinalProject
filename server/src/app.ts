@@ -3,11 +3,12 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import { Request, Response, constructor } from 'express';
-import { HttpClient } from '@angular/common/http';
 
-const http: HttpClient;
+
+const https= require('https');
 dotenv.config();
 
+const request1 = require('request');
 const KEY = process.env.KEY|| '';
 var weather :Object;
 
@@ -27,12 +28,11 @@ function startServer() {
     const lat = request.params.lat;
     const long = request.params.long;
     try{
-      this.http.get('https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long)
-      .subscribe((response: any) => {
-        this.weather = response;
+      request1('https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long, function (error, response,body){
+        console.error('error:', error);
+        console.log('statusCode:', response && response.statusCode);
+        console.log('body', body);
       });
-
-      response.send(weather);
     }catch(error){
       console.error(error);
       response.status(500);
