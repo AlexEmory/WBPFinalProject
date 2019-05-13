@@ -10,7 +10,6 @@ dotenv.config();
 
 const request1 = require('request');
 const KEY = process.env.KEY|| '';
-var weather :Object;
 
 function startServer() {
   const app = express();
@@ -24,15 +23,29 @@ function startServer() {
 
 
 
-  app.get('/weather', async (request: Request, response: Response) => {
+  app.get('/weather/:lat&:long', async (request: Request, response: Response) => {
     const lat = request.params.lat;
+    console.log(lat);
     const long = request.params.long;
+    console.log(long);
+    var getRequest= 'https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long;
+    console.log(getRequest);
     try{
-      request1('https://api.darksky.net/forecast/' + KEY + '/' + lat + ',' + long, function (error, response,body){
-        console.error('error:', error);
-        console.log('statusCode:', response && response.statusCode);
-        console.log('body', body);
+      https.get(getRequest, (res:any)=>{
+        console.log('statusCode: ', res.statusCode);
+        console.log('headers:', res.headers);
+        var body = '';
+        res.on('data', function(chunk:object) {
+          body += chunk;
+        });
+        res.on('end', function() {
+          console.log(body);
+          response.send(body);
+        });
+      }).on('error',(e:Error) => {
+        console.error(e);
       });
+
     }catch(error){
       console.error(error);
       response.status(500);
