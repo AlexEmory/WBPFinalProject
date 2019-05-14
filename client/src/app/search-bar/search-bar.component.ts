@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {WeatherComponent} from '../weather/weather.component';
+import {WeatherService} from '../weather.service'
 @Component({
-  providers:[WeatherComponent],
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor(private weatherComponent: WeatherComponent) { }
+  constructor(private weatherService: WeatherService) { }
   lat: string = "";
   long: string = "";
+  weather: Object;
   ngOnInit() { }
   onSubmit(f: NgForm) {
     console.log(f.value);  // { lat: '', long: '' }
@@ -19,7 +19,11 @@ export class SearchBarComponent implements OnInit {
     this.long = f.controls['long'].value;
     if (this.lat )
     if (f.valid) {
-      this.weatherComponent.getWeather(this.lat, this.long);
+      this.weatherService.getWeather(this.lat,this.long)
+      .subscribe(weather =>{
+        this.weather=weather;
+        console.log(weather);
+      });
     }
   }
 }
