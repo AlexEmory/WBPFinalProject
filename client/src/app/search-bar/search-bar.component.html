@@ -1,11 +1,12 @@
 Enter your location to get your weather!
 <form #loc="ngForm" (ngSubmit)="onSubmit(loc)" novalidate>
-  <input type="number" min =" -90" max = "90" step="0.01" name="lat" ngModel required #lat="ngModel">
-  <input type="number" min="-180" max= "180" step="0.01" name="long" ngModel required #long="ngModel">
+  <input type="number" min =" -90" max = "90" step="0.01" name="lat" ngModel required #lat="ngModel"><br>
+  <input type="number" min="-180" max= "180" step="0.01" name="long" ngModel required #long="ngModel"><br>
   <button>Submit</button>
 </form>
 
 <p>Latitude value: {{ lat.value }}</p>
 <p>Longitude value: {{ long.value }}</p>
-<app-weather [weather]="weather"></app-weather>
+<p id = "notvalid"> Please input valid lagitude and longitude values</p>
+<app-weather id = "weatherDis" [weather]="weather"></app-weather>
 

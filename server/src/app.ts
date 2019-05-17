@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import { Request, Response, constructor } from 'express';
 
-
+const cors = require ('cors');
 const https= require('https');
 dotenv.config();
 
@@ -13,7 +13,7 @@ const KEY = process.env.KEY|| '';
 
 function startServer() {
   const app = express();
-
+  app.use(cors());
   app.use(morgan('dev'));
 
   app.use(bodyParser.urlencoded({ extended: true }));

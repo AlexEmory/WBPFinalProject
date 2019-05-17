@@ -9,6 +9,6 @@ export class WeatherService {
   constructor(private http : HttpClient) { }
 
   getWeather(lat: string,long: string): Observable<object>{
-    return this.http.get('localhost:3000/weather?' + lat + '&' + long);
+    return this.http.get('http://localhost:3000/weather/' + lat + '&' + long);
   }
 }

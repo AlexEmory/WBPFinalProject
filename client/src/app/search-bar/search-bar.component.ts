@@ -22,8 +22,11 @@ export class SearchBarComponent implements OnInit {
       this.weatherService.getWeather(this.lat,this.long)
       .subscribe(weather =>{
         this.weather=weather;
-        console.log(weather);
       });
+      document.getElementById("weatherDis").style.visibility = "visible";
+    }else{
+      document.getElementById("notvalid").style.visibility = "visible";
     }
+    
   }
 }
