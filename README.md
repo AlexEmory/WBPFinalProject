@@ -5,6 +5,8 @@ To set up and run the project locally you must go to both client and server fold
 You must then, in a web browser, navigate to localhost:4200 as that is where the client is deployed. The server is deployed on port 3000, 
 but it doesn't need to be open in the browser for the application to run. 
 
+The only inputs in the application is the longitude and latitude which can only be inputed as numbers and have min/max attached to them. If they are not within this range, no weather object will be recieved. 
+
 Each User Stories Completed:
 1. As a basic user, I would like to display the current weather, so I may know what the weather is like outside.
 2. As a casual user, I would like to display the current 'feels like' temperature, so I may know what to wear outside.
